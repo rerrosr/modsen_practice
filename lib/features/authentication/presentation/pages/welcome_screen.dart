@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 import '../../../../core/core.dart';
-import '/core_ui/theme/theme.dart';
+import '../../../../core_ui/core_ui.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -74,7 +75,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CryptoCoinColors.blackBackgroundColor,
       body: Padding(
         padding: const EdgeInsets.only(
           top: CryptoCoinDimens.PADDING_220,
@@ -107,9 +107,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                         children: <Widget>[
                           Text(
                             'Welcome to Coinapp',
-                            style: CryptoCoinFonts.titleText.copyWith(
-                              color: Colors.white,
-                            ),
+                            style: context.theme.textTheme.displayLarge
+                                ?.copyWith(color: CryptoCoinColors.whiteColor),
                             textAlign: TextAlign.center,
                           ),
                           const SizedBox(height: CryptoCoinDimens.HEIGHT_10),
@@ -119,9 +118,10 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                             ),
                             child: Text(
                               'All your crypto transactions in one place! Track coins, add portfolios, buy & sell.',
-                              style: CryptoCoinFonts.descriptionText.copyWith(
-                                color: CryptoCoinColors.whiteSecondaryColor,
-                              ),
+                              style: context.theme.textTheme.bodyLarge
+                                  ?.copyWith(
+                                    color: CryptoCoinColors.whiteSecondaryColor,
+                                  ),
                               textAlign: TextAlign.center,
                             ),
                           ),
@@ -143,17 +143,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     height: CryptoCoinDimens.HEIGHT_50,
                     child: FilledButton(
                       onPressed: _onSignIn,
-                      style: FilledButton.styleFrom(
-                        backgroundColor: CryptoCoinColors.blueButtonColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                            CryptoCoinDimens.BORDER_RADIUS_25,
-                          ),
-                        ),
-                      ),
                       child: Text(
                         'Sign In',
-                        style: CryptoCoinFonts.buttonText.copyWith(
+                        style: context.theme.textTheme.labelLarge?.copyWith(
                           color: CryptoCoinColors.whiteColor,
                         ),
                       ),
@@ -165,17 +157,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     height: CryptoCoinDimens.HEIGHT_50,
                     child: OutlinedButton(
                       onPressed: _onSignUp,
-                      style: OutlinedButton.styleFrom(
-                        side: const BorderSide(width: 0),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                            CryptoCoinDimens.BORDER_RADIUS_25,
-                          ),
-                        ),
-                      ),
                       child: Text(
                         'Sign Up',
-                        style: CryptoCoinFonts.buttonText.copyWith(
+                        style: context.theme.textTheme.labelLarge?.copyWith(
                           color: CryptoCoinColors.whiteColor,
                         ),
                       ),
