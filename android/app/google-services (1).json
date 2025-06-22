@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "520406226909",
+    "project_id": "crypto-coins-f3fff",
+    "storage_bucket": "crypto-coins-f3fff.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520406226909:android:2abad16733dcde9a574834",
+        "android_client_info": {
+          "package_name": "com.example.modsen_practice"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSh8RPrc3UexDCZ-3O1QtdgFLnsOv0EE0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
