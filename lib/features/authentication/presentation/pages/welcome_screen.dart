@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../../../../core/core.dart';
+import '/core_ui/theme/theme.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -27,7 +29,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     _logoScaleAnimation = Tween<double>(begin: 0.5, end: 1.0).animate(
       CurvedAnimation(
         parent: _controller,
-        curve: const Interval(0.0, 0.6, curve: Curves.easeOutBack),
+        curve: const Interval(0.0, 0.8, curve: Curves.easeOutBack),
       ),
     );
     _logoOpacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -48,7 +50,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     _buttonsOpacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: _controller,
-        curve: const Interval(0.7, 1.0, curve: Curves.easeIn),
+        curve: const Interval(0.4, 1.0, curve: Curves.easeIn),
       ),
     );
 
@@ -63,20 +65,22 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
   void _onSignIn() {
     // TODO: Navigate to sign in
-    print('Sign In pressed');
   }
 
   void _onSignUp() {
     // TODO: Navigate to sign up
-    print('Sign Up pressed');
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: CryptoCoinColors.blackBackgroundColor,
       body: Padding(
-        padding: const EdgeInsets.only(top: 220, left: 30, right: 30),
+        padding: const EdgeInsets.only(
+          top: CryptoCoinDimens.PADDING_220,
+          left: CryptoCoinDimens.PADDING_30,
+          right: CryptoCoinDimens.PADDING_30,
+        ),
         child: Column(
           children: <Widget>[
             Center(
@@ -88,36 +92,35 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     child: ScaleTransition(
                       scale: _logoScaleAnimation,
                       child: SvgPicture.asset(
-                        'assets/svg/logo.svg',
+                        AppConstants.logoSvgAsset,
                         width: 107,
                         height: 94,
                       ),
                     ),
                   ),
-                  const SizedBox(height: 50),
+                  const SizedBox(height: CryptoCoinDimens.HEIGHT_50),
                   SlideTransition(
                     position: _textSlideAnimation,
                     child: FadeTransition(
                       opacity: _buttonsOpacityAnimation,
                       child: Column(
                         children: <Widget>[
-                          const Text(
+                          Text(
                             'Welcome to Coinapp',
-                            style: TextStyle(
+                            style: CryptoCoinFonts.titleText.copyWith(
                               color: Colors.white,
-                              fontSize: 32,
-                              fontWeight: FontWeight.bold,
                             ),
                             textAlign: TextAlign.center,
                           ),
-                          const SizedBox(height: 10),
+                          const SizedBox(height: CryptoCoinDimens.HEIGHT_10),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 4),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: CryptoCoinDimens.PADDING_4,
+                            ),
                             child: Text(
                               'All your crypto transactions in one place! Track coins, add portfolios, buy & sell.',
-                              style: TextStyle(
-                                color: Colors.white.withValues(alpha: 0.7),
-                                fontSize: 14,
+                              style: CryptoCoinFonts.descriptionText.copyWith(
+                                color: CryptoCoinColors.whiteSecondaryColor,
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -126,7 +129,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                       ),
                     ),
                   ),
-                  const SizedBox(height: 54),
+                  const SizedBox(height: CryptoCoinDimens.HEIGHT_54),
                 ],
               ),
             ),
@@ -136,48 +139,44 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   SizedBox(
-                    width: 187,
-                    height: 50,
-                    child: ElevatedButton(
+                    width: CryptoCoinDimens.WIDTH_187,
+                    height: CryptoCoinDimens.HEIGHT_50,
+                    child: FilledButton(
                       onPressed: _onSignIn,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromRGBO(0, 87, 255, 1),
+                      style: FilledButton.styleFrom(
+                        backgroundColor: CryptoCoinColors.blueButtonColor,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(
+                            CryptoCoinDimens.BORDER_RADIUS_25,
+                          ),
                         ),
-                        elevation: 0,
                       ),
-                      child: const Text(
+                      child: Text(
                         'Sign In',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                        style: CryptoCoinFonts.buttonText.copyWith(
+                          color: CryptoCoinColors.whiteColor,
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: CryptoCoinDimens.HEIGHT_16),
                   SizedBox(
-                    width: 187,
-                    height: 50,
+                    width: CryptoCoinDimens.WIDTH_187,
+                    height: CryptoCoinDimens.HEIGHT_50,
                     child: OutlinedButton(
                       onPressed: _onSignUp,
                       style: OutlinedButton.styleFrom(
-                        side: const BorderSide(
-                          color: Colors.white24,
-                          width: 1.5,
-                        ),
+                        side: const BorderSide(width: 0),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(
+                            CryptoCoinDimens.BORDER_RADIUS_25,
+                          ),
                         ),
                       ),
-                      child: const Text(
+                      child: Text(
                         'Sign Up',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                        style: CryptoCoinFonts.buttonText.copyWith(
+                          color: CryptoCoinColors.whiteColor,
                         ),
                       ),
                     ),
