@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/core.dart';
+import '../../../../core/navigation/app_router.dart';
 import '../../../../core_ui/core_ui.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -65,11 +67,11 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   }
 
   void _onSignIn() {
-    // TODO: Navigate to sign in
+    context.go(AppRoutes.signIn);
   }
 
   void _onSignUp() {
-    // TODO: Navigate to sign up
+    context.go(AppRoutes.signUp);
   }
 
   @override
