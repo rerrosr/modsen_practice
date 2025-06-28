@@ -16,8 +16,10 @@ abstract class AppTheme {
       ),
       textTheme: const TextTheme(
         displayLarge: CryptoCoinFonts.titleText,
-        bodyLarge: CryptoCoinFonts.descriptionText,
-        labelLarge: CryptoCoinFonts.buttonText,
+        bodyMedium: CryptoCoinFonts.descriptionText,
+        labelLarge: CryptoCoinFonts.buttonTextBold,
+        titleSmall: CryptoCoinFonts.titleSmall,
+        headlineSmall: CryptoCoinFonts.headlineStyle,
       ),
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(

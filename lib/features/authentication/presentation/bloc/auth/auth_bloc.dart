@@ -11,18 +11,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final SignInUseCase signInUseCase;
   final SignUpUseCase signUpUseCase;
 
-  AuthBloc({
-    required this.signInUseCase,
-    required this.signUpUseCase,
-  }) : super(AuthInitial()) {
+  AuthBloc({required this.signInUseCase, required this.signUpUseCase})
+    : super(AuthInitial()) {
     on<SignUpRequested>(_onSignUpRequested);
     on<SignInRequested>(_onSignInRequested);
   }
 
   Future<void> _onSignUpRequested(
-      SignUpRequested event,
-      Emitter<AuthState> emit,
-      ) async {
+    SignUpRequested event,
+    Emitter<AuthState> emit,
+  ) async {
     emit(AuthLoading());
     try {
       await signUpUseCase.execute(event.email, event.password);
@@ -33,9 +31,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Future<void> _onSignInRequested(
-      SignInRequested event,
-      Emitter<AuthState> emit,
-      ) async {
+    SignInRequested event,
+    Emitter<AuthState> emit,
+  ) async {
     emit(AuthLoading());
     try {
       await signInUseCase.execute(event.email, event.password);

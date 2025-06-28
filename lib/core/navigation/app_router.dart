@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../features/authentication/presentation/pages/sign_in_screen.dart';
-import '../../features/authentication/presentation/pages/sign_up_screen.dart';
+import '../../features/authentication/domain/domain.dart';
+import '../../features/authentication/presentation/pages/auth_screen.dart';
 import '../../features/authentication/presentation/pages/welcome_screen.dart';
 
 abstract class AppRoutes {
@@ -18,17 +18,17 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.welcome,
         builder: (BuildContext context, GoRouterState state) =>
-        const WelcomeScreen(),
+            const WelcomeScreen(),
       ),
       GoRoute(
         path: AppRoutes.signIn,
         builder: (BuildContext context, GoRouterState state) =>
-         const SignInScreen(),
+            const AuthScreen(screenType: AuthScreenType.signIn),
       ),
       GoRoute(
         path: AppRoutes.signUp,
         builder: (BuildContext context, GoRouterState state) =>
-        const SignUpScreen(),
+            const AuthScreen(screenType: AuthScreenType.signUp),
       ),
     ],
   );
