@@ -9,6 +9,7 @@ abstract class AppRoutes {
   static const String welcome = '/';
   static const String signIn = '/signIn';
   static const String signUp = '/signUp';
+  static const String cryptoList = '/cryptoList';
 }
 
 abstract class AppRouter {
@@ -27,6 +28,11 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.signUp,
+        builder: (BuildContext context, GoRouterState state) =>
+            const AuthScreen(screenType: AuthScreenType.signUp),
+      ),
+      GoRoute(
+        path: AppRoutes.cryptoList,
         builder: (BuildContext context, GoRouterState state) =>
             const AuthScreen(screenType: AuthScreenType.signUp),
       ),
