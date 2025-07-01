@@ -2,15 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nested/nested.dart';
 
 import 'core/navigation/app_router.dart';
 import 'core_ui/core_ui.dart';
-import 'features/authentication/data/datasources/firebase_auth_data_source.dart';
-import 'features/authentication/data/repositories/auth_repository_impl.dart';
-import 'features/authentication/domain/repositories/auth_repository.dart';
-import 'features/authentication/domain/usecases/sign_in_usecase.dart';
-import 'features/authentication/domain/usecases/sign_up_usecase.dart';
-import 'features/authentication/presentation/bloc/auth/auth_bloc.dart';
+import 'features/features.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,20 +20,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
-      providers: [
+      providers: <SingleChildWidget>[
         RepositoryProvider<FirebaseAuthDataSource>(
           create: (_) => FirebaseAuthDataSource(FirebaseAuth.instance),
         ),
         RepositoryProvider<AuthRepository>(
-          create: (context) => AuthRepositoryImpl(
-            context.read<FirebaseAuthDataSource>(),
-          ),
+          create: (BuildContext context) =>
+              AuthRepositoryImpl(context.read<FirebaseAuthDataSource>()),
         ),
       ],
       child: MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) => AuthBloc(
+        providers: <SingleChildWidget>[
+          BlocProvider<AuthBloc>(
+            create: (BuildContext context) => AuthBloc(
               signInUseCase: SignInUseCase(context.read<AuthRepository>()),
               signUpUseCase: SignUpUseCase(context.read<AuthRepository>()),
             ),
