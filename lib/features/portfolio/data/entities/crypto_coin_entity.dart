@@ -4,10 +4,15 @@ part 'crypto_coin_entity.g.dart';
 
 @JsonSerializable()
 class CryptoCoinEntity {
+  @JsonKey(name: 'id')
   final String id;
+  @JsonKey(name: 'name')
   final String name;
+  @JsonKey(name: 'image')
   final String symbol;
+  @JsonKey(name: 'current_price')
   final double priceUsd;
+  @JsonKey(name: 'price_change_24h')
   final double change24h;
 
   const CryptoCoinEntity({

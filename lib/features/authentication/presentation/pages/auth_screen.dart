@@ -8,7 +8,7 @@ import '../../../../core/navigation/app_router.dart';
 import '../../../../core_ui/core_ui.dart';
 
 import '../../domain/domain.dart';
-import '../bloc/auth/auth_bloc.dart';
+import '../bloc/auth_bloc.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key, required this.screenType});
@@ -200,9 +200,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        if (!widget
-                            .screenType
-                            .isSignIn)
+                        if (!widget.screenType.isSignIn)
                           Text(
                             'By signing up you accept the Terms of Service & Privacy Policy.',
                             style: context.theme.textTheme.bodyMedium?.copyWith(

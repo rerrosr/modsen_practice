@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../features/authentication/domain/domain.dart';
-import '../../features/authentication/presentation/pages/auth_screen.dart';
-import '../../features/authentication/presentation/pages/welcome_screen.dart';
+import '../../features/features.dart';
 
 abstract class AppRoutes {
   static const String welcome = '/';
   static const String signIn = '/signIn';
   static const String signUp = '/signUp';
-  static const String cryptoList = '/cryptoList';
+  static const String portfolio = '/portfolio';
 }
 
-abstract class AppRouter {
+class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: AppRoutes.welcome,
+    initialLocation: AppRoutes.portfolio,
     routes: <GoRoute>[
       GoRoute(
         path: AppRoutes.welcome,
@@ -32,9 +30,9 @@ abstract class AppRouter {
             const AuthScreen(screenType: AuthScreenType.signUp),
       ),
       GoRoute(
-        path: AppRoutes.cryptoList,
+        path: AppRoutes.portfolio,
         builder: (BuildContext context, GoRouterState state) =>
-            const AuthScreen(screenType: AuthScreenType.signUp),
+            const PortfolioScreen(),
       ),
     ],
   );

@@ -1,8 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import '../../../domain/usecases/sign_in_usecase.dart';
-import '../../../domain/usecases/sign_up_usecase.dart';
+import '../../domain/domain.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
