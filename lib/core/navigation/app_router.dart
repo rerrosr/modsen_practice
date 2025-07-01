@@ -12,7 +12,7 @@ abstract class AppRoutes {
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: AppRoutes.portfolio,
+    initialLocation: AppRoutes.welcome,
     routes: <GoRoute>[
       GoRoute(
         path: AppRoutes.welcome,

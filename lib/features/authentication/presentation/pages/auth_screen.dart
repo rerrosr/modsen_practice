@@ -48,7 +48,7 @@ class _AuthScreenState extends State<AuthScreen> {
               }
             }
             if (state is AuthSuccess) {
-              context.go(AppRoutes.welcome);
+              context.go(AppRoutes.portfolio);
             }
           },
           builder: (BuildContext context, AuthState state) {
