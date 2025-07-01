@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../domain/models/crypto_coin.dart';
 import '../presentation.dart';
 
 class LoadedPortfolioScreen extends StatelessWidget {
@@ -8,6 +9,22 @@ class LoadedPortfolioScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Column(
+      children: <Widget>[
+        Expanded(
+          child: ListView.builder(
+            itemCount: state.cryptoList.length,
+            itemBuilder: (BuildContext context, int index) {
+              final CryptoCoinModel crypto = state.cryptoList[index];
+              return ListTile(
+                title: Text(crypto.name),
+                subtitle: Text('Price: \$${crypto.name}'),
+                trailing: Text('Market Cap: \$${crypto.priceUsd}'),
+              );
+            },
+          ),
+        ),
+      ],
+    );
   }
 }

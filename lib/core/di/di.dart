@@ -2,11 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../features/features.dart';
-import '../../features/portfolio/domain/usecases/get_crypto_list_use_case.dart';
 
 final GetIt appLocator = GetIt.instance;
 
-class MapBoxDi {
+class CryptoDi {
   static Future<void> _initProviders(GetIt locator) async {
     locator.registerLazySingleton<CryptoCoinProvider>(
       () => CryptoCoinProviderImpl(dio: locator<Dio>()),
@@ -16,7 +15,7 @@ class MapBoxDi {
   static Future<void> _initRepositories(GetIt locator) async {
     locator.registerLazySingleton<CryptoCoinRepository>(
       () => CryptoCoinRepositoryImpl(
-        cryptoCoinProvider: locator<CryptoCoinProvider>(),
+        cryptoCoinProvider: CryptoCoinProviderImpl(dio: appLocator<Dio>()),
       ),
     );
   }
@@ -26,7 +25,7 @@ class MapBoxDi {
   static Future<void> _initUseCases(GetIt locator) async {
     locator.registerFactory<GetCryptoListUseCase>(
       () => GetCryptoListUseCase(
-        cryptoCoinRepository: locator<CryptoCoinRepositoryImpl>(),
+        cryptoCoinRepository: locator<CryptoCoinRepository>(),
       ),
     );
   }

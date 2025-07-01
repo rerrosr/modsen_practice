@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nested/nested.dart';
 
+import 'core/di/di.dart';
 import 'core/navigation/app_router.dart';
 import 'core_ui/core_ui.dart';
 import 'features/features.dart';
@@ -11,6 +12,7 @@ import 'features/features.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await CryptoDi.initDependencies(appLocator);
   runApp(const MyApp());
 }
 
