@@ -113,6 +113,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         ),
                         const SizedBox(height: CryptoCoinDimens.HEIGHT_60),
                         Form(
+                          key: _formKey,
                           child: Column(
                             children: <Widget>[
                               TextFormField(
